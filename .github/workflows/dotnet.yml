@@ -5,9 +5,6 @@ name: .NET
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - 'feature/**'
   pull_request:
     branches:
       - 'master'
