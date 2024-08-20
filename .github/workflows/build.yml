@@ -1,0 +1,22 @@
+name: Build Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: dotnet build
+        run: dotnet build --configuration Release
+
+      - name: dotnet publish
+        run: dotnet publish -C Release -r win-x64 --self-contained
